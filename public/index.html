@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ability - Accessible Opportunities Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/custom.css">
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="accessibility-toggle" role="toolbar" aria-label="Accessibility controls">
+    <button onclick="Accessibility.toggleHighContrast()" class="bg-gray-800 text-yellow-400 hover:bg-gray-700" title="Toggle High Contrast (Alt+C)" aria-label="Toggle high contrast mode">
+      <i class="fas fa-adjust"></i>
+    </button>
+    <button onclick="Accessibility.increaseFontSize()" class="bg-gray-800 text-white hover:bg-gray-700" title="Increase Font Size (Alt+Plus)" aria-label="Increase font size">
+      <i class="fas fa-plus"></i>
+    </button>
+    <button onclick="Accessibility.decreaseFontSize()" class="bg-gray-800 text-white hover:bg-gray-700" title="Decrease Font Size (Alt+Minus)" aria-label="Decrease font size">
+      <i class="fas fa-minus"></i>
+    </button>
+    <button onclick="Accessibility.readPageContent()" class="bg-gray-800 text-blue-400 hover:bg-gray-700" title="Read Page Aloud" aria-label="Read page content aloud">
+      <i class="fas fa-volume-up"></i>
+    </button>
+    <button onclick="VoiceCommands.toggle()" class="bg-gray-800 text-green-400 hover:bg-gray-700" title="Toggle Voice Control" aria-label="Toggle voice control">
+      <i class="fas fa-microphone"></i>
+    </button>
+  </div>
+
+  <nav class="bg-white shadow-sm border-b sticky top-0 z-40" role="navigation" aria-label="Main navigation">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="flex items-center gap-2 text-blue-600 font-bold text-xl" aria-label="Ability Home">
+          <i class="fas fa-hands-holding-circle text-2xl"></i>
+          <span>Ability</span>
+        </a>
+        <div id="nav-links" class="flex items-center gap-4"></div>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <section class="bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="text-center max-w-3xl mx-auto">
+          <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+            Opportunities for <span class="text-yellow-300">Everyone</span>
+          </h1>
+          <p class="text-xl md:text-2xl text-blue-100 mb-10 leading-relaxed">
+            Connect with inclusive employers, scholarships, training programs, and events designed to empower differently-abled individuals.
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="/opportunities.html" class="px-8 py-4 bg-white text-blue-700 rounded-xl font-bold text-lg hover:bg-blue-50 transition shadow-lg">
+              <i class="fas fa-search mr-2"></i>Browse Opportunities
+            </a>
+            <button onclick="Auth.user ? null : showSignupModal()" class="px-8 py-4 border-2 border-white text-white rounded-xl font-bold text-lg hover:bg-white/10 transition">
+              <i class="fas fa-user-plus mr-2"></i>Get Started Free
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-white" aria-labelledby="features-heading">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 id="features-heading" class="text-3xl font-bold text-center text-gray-900 mb-4">Why Ability?</h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">A fully accessible platform built with inclusion at its core</p>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center p-6 rounded-2xl bg-blue-50 hover:shadow-lg transition">
+            <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-universal-access text-2xl text-blue-600"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Fully Accessible</h3>
+            <p class="text-gray-600">Screen reader support, voice navigation, high contrast mode, and adjustable text sizes.</p>
+          </div>
+          <div class="text-center p-6 rounded-2xl bg-green-50 hover:shadow-lg transition">
+            <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-briefcase text-2xl text-green-600"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Diverse Opportunities</h3>
+            <p class="text-gray-600">Jobs, scholarships, training programs, events, and resources all in one place.</p>
+          </div>
+          <div class="text-center p-6 rounded-2xl bg-purple-50 hover:shadow-lg transition">
+            <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-shield-alt text-2xl text-purple-600"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Inclusive Community</h3>
+            <p class="text-gray-600">Connect with employers and organizations committed to disability inclusion.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-gray-50" id="featured-opportunities" aria-labelledby="featured-heading">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 id="featured-heading" class="text-3xl font-bold text-center text-gray-900 mb-12">Featured Opportunities</h2>
+        <div id="featured-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <p class="col-span-full text-center text-gray-500 py-8">Loading opportunities...</p>
+        </div>
+        <div class="text-center mt-8">
+          <a href="/opportunities.html" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition">
+            View All Opportunities <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-white" aria-labelledby="roles-heading">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 id="roles-heading" class="text-3xl font-bold text-center text-gray-900 mb-12">Built for Every Role</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="border-2 border-blue-200 rounded-2xl p-6 hover:border-blue-500 transition">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                <i class="fas fa-user text-blue-600"></i>
+              </div>
+              <h3 class="text-xl font-bold">Job Seekers</h3>
+            </div>
+            <ul class="space-y-2 text-gray-600">
+              <li><i class="fas fa-check text-green-500 mr-2"></i>Search & apply to opportunities</li>
+              <li><i class="fas fa-check text-green-500 mr-2"></i>Track application status</li>
+              <li><i class="fas fa-check text-green-500 mr-2"></i>Build accessible profile</li>
+            </ul>
+          </div>
+          <div class="border-2 border-green-200 rounded-2xl p-6 hover:border-green-500 transition">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                <i class="fas fa-building text-green-600"></i>
+              </div>
+              <h3 class="text-xl font-bold">Organizers</h3>
+            </div>
+            <ul class="space-y-2 text-gray-600">
+              <li><i class="fas fa-check text-green-500 mr-2"></i>Post jobs & events</li>
+              <li><i class="fas fa-check text-green-500 mr-2"></i>Review applications</li>
+              <li><i class="fas fa-check text-green-500 mr-2"></i>Analytics dashboard</li>
+            </ul>
+          </div>
+          <div class="border-2 border-purple-200 rounded-2xl p-6 hover:border-purple-500 transition">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+                <i class="fas fa-cog text-purple-600"></i>
+              </div>
+              <h3 class="text-xl font-bold">Admins</h3>
+            </div>
+            <ul class="space-y-2 text-gray-600">
+              <li><i class="fas fa-check text-green-500 mr-2"></i>Full system control</li>
+              <li><i class="fas fa-check text-green-500 mr-2"></i>User management</li>
+              <li><i class="fas fa-check text-green-500 mr-2"></i>Activity monitoring</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+      <div class="max-w-4xl mx-auto text-center px-4">
+        <h2 class="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+        <p class="text-blue-100 mb-8 text-lg">Join our inclusive community today and discover opportunities tailored for you.</p>
+        <button onclick="Auth.user ? window.location.href='/opportunities.html' : showSignupModal()" class="px-8 py-4 bg-white text-blue-700 rounded-xl font-bold text-lg hover:bg-blue-50 transition shadow-lg">
+          <i class="fas fa-rocket mr-2"></i>Create Free Account
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-900 text-gray-400 py-12 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-2 text-white font-bold text-xl mb-4">
+            <i class="fas fa-hands-holding-circle text-blue-400"></i>
+            Ability
+          </div>
+          <p class="text-sm">Connecting differently-abled individuals with inclusive opportunities worldwide.</p>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-3">Platform</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/opportunities.html" class="hover:text-white transition">Browse Opportunities</a></li>
+            <li><a href="#" onclick="showSignupModal()" class="hover:text-white transition">Sign Up</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-3">Accessibility</h4>
+          <ul class="space-y-2 text-sm">
+            <li><span><i class="fas fa-keyboard mr-2"></i>Alt+C: High Contrast</span></li>
+            <li><span><i class="fas fa-text-height mr-2"></i>Alt+/-: Font Size</span></li>
+            <li><span><i class="fas fa-microphone mr-2"></i>Voice Commands</span></li>
+            <li><span><i class="fas fa-volume-up mr-2"></i>Text-to-Speech</span></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-3">Contact</h4>
+          <ul class="space-y-2 text-sm">
+            <li><i class="fas fa-envelope mr-2"></i>support@ability.org</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm">
+        <p>&copy; 2026 Ability. Built with accessibility at its core.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+  <script src="/js/accessibility.js"></script>
+  <script src="/js/voice-commands.js"></script>
+  <script src="/js/chatbot.js"></script>
+  <script>
+    async function loadFeatured() {
+      try {
+        const data = await API.get('/api/opportunities?limit=6');
+        const grid = document.getElementById('featured-grid');
+        if (!data.opportunities || data.opportunities.length === 0) {
+          grid.innerHTML = '<p class="col-span-full text-center text-gray-500 py-8">No opportunities available yet. Check back soon!</p>';
+          return;
+        }
+        grid.innerHTML = data.opportunities.map(opp => `
+          <div class="bg-white rounded-2xl shadow-sm border p-6 hover:shadow-lg transition animate-fade-in">
+            <div class="flex items-center justify-between mb-3">
+              <span class="${getBadgeClass(opp.type)}">${opp.type}</span>
+              <span class="text-xs text-gray-400">${formatDate(opp.createdAt)}</span>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">${opp.title}</h3>
+            <p class="text-gray-600 text-sm mb-3 line-clamp-2">${opp.description.substring(0, 120)}...</p>
+            <div class="flex items-center justify-between text-sm text-gray-500">
+              <span><i class="fas fa-map-marker-alt mr-1"></i>${opp.location || 'Remote'}</span>
+              <span><i class="fas fa-eye mr-1"></i>${opp.views} views</span>
+            </div>
+            <a href="/opportunities.html?id=${opp._id}" class="mt-4 block text-center py-2 border-2 border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition">
+              View Details
+            </a>
+          </div>
+        `).join('');
+      } catch (err) {
+        document.getElementById('featured-grid').innerHTML = '<p class="col-span-full text-center text-gray-500">Unable to load opportunities.</p>';
+      }
+    }
+
+    async function initPage() {
+      loadFeatured();
+    }
+
+    document.addEventListener('DOMContentLoaded', initApp);
+  </script>
+</body>
+</html>
